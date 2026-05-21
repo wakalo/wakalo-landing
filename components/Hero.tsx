@@ -169,9 +169,9 @@ export default function Hero() {
           className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
         >
           {[
-            { label: "Trajets", value: "500+", color: "mint-bright" },
-            { label: "Membres", value: "2K+", color: "amber-gold" },
-            { label: "Villes", value: "12", color: "coral-red" },
+            { label: "Trajets", value: "500+", sub: "Objectif 2025", color: "mint-bright" },
+            { label: "Membres", value: "2K+", sub: "Objectif 2025", color: "amber-gold" },
+            { label: "Villes couvertes", value: "12", sub: "À travers le Bénin", color: "coral-red" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -188,6 +188,7 @@ export default function Hero() {
               <div className="text-slate-300 text-sm font-medium uppercase tracking-wide">
                 {stat.label}
               </div>
+              <div className="text-slate-400 text-xs mt-1">{stat.sub}</div>
             </motion.div>
           ))}
         </motion.div>

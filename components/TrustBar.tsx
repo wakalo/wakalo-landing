@@ -63,25 +63,25 @@ function Stat({ value, label, icon, suffix, prefix }: StatProps) {
 export default function TrustBar() {
   const stats: StatProps[] = [
     {
-      value: 2500,
-      label: "Membres Actifs",
+      value: 10000,
+      label: "Membres — Objectif 2025",
       icon: <Users className="w-8 h-8" />,
       suffix: "+",
     },
     {
       value: 12,
-      label: "Villes Connectées",
+      label: "Villes Couvertes",
       icon: <MapPin className="w-8 h-8" />,
     },
     {
-      value: 98,
-      label: "Satisfaction",
+      value: 70,
+      label: "Économies ciblées",
       icon: <Star className="w-8 h-8" />,
       suffix: "%",
     },
     {
       value: 100,
-      label: "Sécurité Vérifiée",
+      label: "Vérification d'identité",
       icon: <Shield className="w-8 h-8" />,
       suffix: "%",
     },
@@ -102,10 +102,10 @@ export default function TrustBar() {
           className="text-center mb-16"
         >
           <h2 className="font-display font-bold text-3xl md:text-4xl text-forest-deep mb-4">
-            Rejoignez une communauté de confiance
+            Rejoignez le mouvement dès le lancement
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            Des milliers de voyageurs font déjà confiance à Wakalo pour leurs déplacements quotidiens
+            Wakalo arrive bientôt au Bénin. Inscrivez-vous en bêta et soyez parmi les premiers à profiter d&apos;une mobilité plus accessible.
           </p>
         </motion.div>
 

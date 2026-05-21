@@ -2,6 +2,8 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import HowItWorks from "@/components/HowItWorks";
 import Benefits from "@/components/Benefits";
+import Impact from "@/components/Impact";
+import Coverage from "@/components/Coverage";
 import LivingRoute from "@/components/LivingRoute";
 import BetaSignup from "@/components/BetaSignup";
 import FAQ from "@/components/FAQ";
@@ -15,6 +17,8 @@ export default function Home() {
       <TrustBar />
       <HowItWorks />
       <Benefits />
+      <Impact />
+      <Coverage />
       <LivingRoute />
       <BetaSignup />
       <FAQ />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 // Plus Jakarta Sans - Warm, humanist font (matching the app)
 const plusJakarta = Plus_Jakarta_Sans({
@@ -63,7 +64,10 @@ export default function RootLayout({
       lang="fr"
       className={`${plusJakarta.variable} ${cabinet.variable} ${spaceGrotesk.variable} h-full`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
