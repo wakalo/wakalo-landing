@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import Reveal from "./Reveal";
+import HeroIn from "./HeroIn";
 
 const stats = [
   { value: "Web & mobile", label: "Applications sur mesure" },
@@ -21,28 +21,28 @@ export default function CorpHero() {
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <Reveal>
+            <HeroIn>
               <p className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/60 px-4 py-1.5 text-sm font-medium text-ink/70">
                 <span className="h-2 w-2 rounded-full bg-ochre" />
                 Wakalo Corp · Cotonou, Bénin
               </p>
-            </Reveal>
+            </HeroIn>
 
-            <Reveal delay={0.1}>
+            <HeroIn delay={0.1}>
               <h1 className="mt-8 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
                 Nous concevons les solutions{" "}
                 <span className="text-ochre">numériques</span> de demain.
               </h1>
-            </Reveal>
+            </HeroIn>
 
-            <Reveal delay={0.2}>
+            <HeroIn delay={0.2}>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink/70 sm:text-xl">
                 Wakalo Corp développe des applications web et mobiles sur mesure pour les
                 entreprises, et crée ses propres produits pour répondre aux besoins du quotidien.
               </p>
-            </Reveal>
+            </HeroIn>
 
-            <Reveal delay={0.3}>
+            <HeroIn delay={0.3}>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/contact"
@@ -59,10 +59,10 @@ export default function CorpHero() {
                   <ArrowDown className="h-5 w-5" />
                 </Link>
               </div>
-            </Reveal>
+            </HeroIn>
           </div>
 
-          <Reveal delay={0.2} className="lg:col-span-5">
+          <HeroIn delay={0.2} className="lg:col-span-5">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-ink">
               <Image
                 src="/benin/cotonou-1.jpg"
@@ -80,11 +80,11 @@ export default function CorpHero() {
                 </p>
               </div>
             </div>
-          </Reveal>
+          </HeroIn>
         </div>
 
         {/* Stat strip */}
-        <Reveal delay={0.4}>
+        <HeroIn delay={0.4}>
           <dl className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 sm:grid-cols-3">
             {stats.map((s) => (
               <div key={s.label} className="bg-cream px-6 py-6">
@@ -93,7 +93,7 @@ export default function CorpHero() {
               </div>
             ))}
           </dl>
-        </Reveal>
+        </HeroIn>
       </div>
     </section>
   );

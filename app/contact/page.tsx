@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPinned, Send, CheckCircle, Clock } from "lucide-react";
 import Reveal from "@/components/corp/Reveal";
+import HeroIn from "@/components/corp/HeroIn";
 import SectionLabel from "@/components/corp/SectionLabel";
 import Footer from "@/components/Footer";
 import { CONTACT_EMAIL, SUPPORT_EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/links";
@@ -95,7 +96,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal>
+          <HeroIn>
             <SectionLabel index="—">Contact</SectionLabel>
             <h1 className="mt-8 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Parlons de votre <span className="text-ochre">projet</span>.
@@ -104,7 +105,7 @@ export default function ContactPage() {
               Application à créer, partenariat ou question sur Wakalo : écrivez-nous, nous
               répondons sous 48 h ouvrées.
             </p>
-          </Reveal>
+          </HeroIn>
         </div>
       </section>
 

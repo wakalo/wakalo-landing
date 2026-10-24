@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Lightbulb, Target, HeartHandshake } from "lucide-react";
 import Reveal from "@/components/corp/Reveal";
+import HeroIn from "@/components/corp/HeroIn";
 import SectionLabel from "@/components/corp/SectionLabel";
 import TeamSection from "@/components/corp/TeamSection";
 import ProjectCTA from "@/components/corp/ProjectCTA";
@@ -47,12 +48,12 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="pt-32 pb-20 lg:pt-40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal>
+          <HeroIn>
             <SectionLabel index="—">À propos</SectionLabel>
             <h1 className="mt-8 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Nous construisons le numérique <span className="text-ochre">utile</span>, depuis Cotonou.
             </h1>
-          </Reveal>
+          </HeroIn>
         </div>
       </section>
 
