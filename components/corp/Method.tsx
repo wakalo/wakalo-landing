@@ -35,9 +35,9 @@ export default function Method() {
           {steps.map((step, i) => (
             <li key={step.title}>
               <Reveal delay={i * 0.08} className="h-full">
-                <div className="relative h-full rounded-[1.5rem] border border-ink/10 bg-cream p-7">
+                <div className="relative h-full rounded-[1.5rem] border border-ink/10 bg-paper p-7">
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-5xl font-bold text-ochre/90">{i + 1}</span>
+                    <span className="font-display text-5xl font-bold text-brand/90">{i + 1}</span>
                     {i < steps.length - 1 && (
                       <span aria-hidden className="hidden h-px flex-1 ml-6 bg-gradient-to-r from-ink/20 to-transparent lg:block" />
                     )}

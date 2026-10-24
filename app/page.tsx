@@ -10,7 +10,7 @@ import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-cream">
+    <main className="min-h-screen bg-paper">
       <CorpHero />
       <WhatWeDo />
       <Services />

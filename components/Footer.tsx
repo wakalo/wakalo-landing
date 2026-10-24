@@ -58,28 +58,28 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-cream">
+    <footer className="bg-forest-deep text-paper">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-10">
         <div className="grid gap-12 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
             <p className="font-display text-3xl font-bold tracking-tight">
-              wakalo <span className="text-ochre font-medium">corp</span>
+              wakalo <span className="text-mint-bright font-medium">corp</span>
             </p>
-            <p className="mt-4 max-w-sm text-cream/60 leading-relaxed">
+            <p className="mt-4 max-w-sm text-paper/60 leading-relaxed">
               Entreprise du numérique basée à Cotonou. Nous concevons des applications sur mesure
               et développons nos propres produits.
             </p>
             <div className="mt-8 space-y-3 text-sm">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-cream/70 hover:text-ochre transition-colors">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-paper/70 hover:text-mint-bright transition-colors">
                 <Mail className="w-4 h-4" />
                 {CONTACT_EMAIL}
               </a>
-              <a href={PHONE_HREF} className="flex items-center gap-3 text-cream/70 hover:text-ochre transition-colors">
+              <a href={PHONE_HREF} className="flex items-center gap-3 text-paper/70 hover:text-mint-bright transition-colors">
                 <Phone className="w-4 h-4" />
                 {PHONE_DISPLAY}
               </a>
-              <p className="flex items-center gap-3 text-cream/70">
+              <p className="flex items-center gap-3 text-paper/70">
                 <MapPin className="w-4 h-4" />
                 Cotonou, Bénin
               </p>
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-cream/40 mb-5">{col.title}</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-paper/40 mb-5">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.name}>
@@ -97,13 +97,13 @@ export default function Footer() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-cream/80 hover:text-ochre transition-colors"
+                        className="inline-flex items-center gap-1 text-paper/80 hover:text-mint-bright transition-colors"
                       >
                         {link.name}
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
                     ) : (
-                      <Link href={link.href} className="text-cream/80 hover:text-ochre transition-colors">
+                      <Link href={link.href} className="text-paper/80 hover:text-mint-bright transition-colors">
                         {link.name}
                       </Link>
                     )}
@@ -114,15 +114,15 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-cream/10 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
-          <p className="text-cream/50 text-sm">© {new Date().getFullYear()} Wakalo Corp. Tous droits réservés.</p>
+        <div className="mt-16 pt-8 border-t border-paper/10 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+          <p className="text-paper/50 text-sm">© {new Date().getFullYear()} Wakalo Corp. Tous droits réservés.</p>
           <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream/70 hover:text-ink hover:bg-ochre hover:border-ochre transition-colors"
+                className="w-10 h-10 rounded-full border border-paper/15 flex items-center justify-center text-paper/70 hover:text-ink hover:bg-mint-bright hover:border-mint-bright transition-colors"
               >
                 <social.icon className="w-4 h-4" />
               </a>
