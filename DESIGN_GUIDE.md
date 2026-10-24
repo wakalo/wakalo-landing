@@ -1,4 +1,26 @@
-# Wakalo Landing Page - Design Guide
+# Wakalo Corp & Wakalo - Design Guide
+
+## Deux identités
+
+Le site présente **Wakalo Corp** (l'entreprise) et **Wakalo** (son application de covoiturage).
+Les deux identités restent visuellement distinctes.
+
+### Wakalo Corp — entreprise
+Utilisée sur `/`, `/about`, `/contact`, la navbar et le footer.
+```
+Ink:         #0B1220  (bg-ink / text-ink)   - texte, blocs forts, footer
+Cream:       #F7F4EE  (bg-cream)            - fond principal
+Ochre:       #E8772E  (bg-ochre / text-ochre) - CTA, accents
+Ochre Dark:  #C9601F  (hover:bg-ochre-dark)
+```
+Composants : `components/corp/*` (`Reveal` pour les apparitions, respecte prefers-reduced-motion ;
+`SectionLabel` pour les sur-titres numérotés).
+
+### Wakalo — application de covoiturage
+Utilisée uniquement dans la section `#products` de l'accueil (`WakaloShowcase`) et sur
+`/wakalo`, `/help`, `/terms`, `/legal`. Palette « Tropical Modernism » ci-dessous.
+
+---
 
 ## 🎨 Design Philosophy: "Tropical Modernism"
 
