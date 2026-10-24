@@ -9,8 +9,8 @@ import { usePathname } from "next/navigation";
 import { BETA_FORM_URL } from "@/lib/links";
 
 const navLinks = [
-  { href: "/#features", label: "Fonctionnalités" },
-  { href: "/#how-it-works", label: "Comment ça marche" },
+  { href: "/wakalo#features", label: "Fonctionnalités" },
+  { href: "/wakalo#how-it-works", label: "Comment ça marche" },
   { href: "/about", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];

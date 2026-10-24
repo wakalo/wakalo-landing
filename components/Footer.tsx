@@ -27,9 +27,9 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 
 const footerLinks = {
   product: [
-    { name: "Comment ça marche", href: "/#how-it-works" },
-    { name: "Fonctionnalités", href: "/#features" },
-    { name: "Devenir conducteur", href: "/#beta" },
+    { name: "Comment ça marche", href: "/wakalo#how-it-works" },
+    { name: "Fonctionnalités", href: "/wakalo#features" },
+    { name: "Devenir conducteur", href: "/wakalo#beta" },
     { name: "Rejoindre la bêta", href: "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tkL-LRUNTZaVjA2QjVLMjVLTEFPREhRMUtOQTY1Ni4u" },
   ],
   company: [

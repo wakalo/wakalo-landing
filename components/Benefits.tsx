@@ -94,7 +94,7 @@ function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
 
 export default function Benefits() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+    <section id="features" className="scroll-mt-16 relative py-32 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-30">
         <div
