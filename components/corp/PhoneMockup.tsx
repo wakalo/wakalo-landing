@@ -46,7 +46,7 @@ function SearchScreen() {
                 {t.time} · {t.seats} place{t.seats > 1 ? "s" : ""}
               </p>
             </div>
-            <p className="text-[11px] font-bold text-mint-bright">{t.price} F</p>
+            <p className="whitespace-nowrap pl-2 text-[11px] font-bold text-mint-bright">{t.price} F</p>
           </div>
         ))}
       </div>

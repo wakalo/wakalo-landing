@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 
 type RevealProps = {
@@ -9,21 +9,30 @@ type RevealProps = {
   className?: string;
 };
 
-// Fade-up on scroll; renders statically when the user prefers reduced motion
-export default function Reveal({ children, delay = 0, className }: RevealProps) {
-  const reduce = useReducedMotion();
+// Fade-up on scroll. Hidden state lives in CSS (.reveal in globals.css) so the
+// server HTML matches the client and content stays visible with reduced motion or no JS.
+export default function Reveal({ children, delay = 0, className = "" }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
 
-  if (reduce) return <div className={className}>{children}</div>;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -80px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
+    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}s` }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
