@@ -107,7 +107,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
 
 export default function HowItWorks() {
   return (
-    <section className="relative py-32 bg-white overflow-hidden">
+    <section id="how-it-works" className="scroll-mt-16 relative py-32 bg-white overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-0 w-96 h-96 bg-mint-bright rounded-full blur-3xl" />

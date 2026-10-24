@@ -16,6 +16,12 @@
 
   /* Neutrals */
   --night-dark: #0F172A;
+
+  /* Wakalo Corp identity */
+  --ink: #0B1220;
+  --cream: #F7F4EE;
+  --ochre: #E8772E;
+  --ochre-dark: #C9601F;
   --slate-800: #1E293B;
   --slate-600: #475569;
   --slate-400: #94A3B8;
@@ -43,6 +49,10 @@
   --color-coral-red: var(--coral-red);
   --color-cream-soft: var(--cream-soft);
   --color-night-dark: var(--night-dark);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-ochre: var(--ochre);
+  --color-ochre-dark: var(--ochre-dark);
   --color-slate-800: var(--slate-800);
   --color-slate-600: var(--slate-600);
   --color-slate-400: var(--slate-400);
@@ -58,7 +68,7 @@
 
   /* Typography */
   --font-sans: var(--font-satoshi);
-  --font-display: var(--font-cabinet);
+  --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-space-grotesk);
 
   /* Spacing Scale - Generous */
@@ -125,4 +135,31 @@ body::before {
   z-index: 9999;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal (components/corp/Reveal.tsx) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Above-the-fold entrance (components/corp/HeroIn.tsx), no JS required */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in {
+    animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-delay, 0s) both;
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
 }

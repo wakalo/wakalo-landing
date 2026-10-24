@@ -32,7 +32,7 @@ export default function BetaSignup() {
   };
 
   return (
-    <section className="relative py-32 bg-gradient-to-br from-white via-cream-soft/30 to-mint-bright/10 overflow-hidden">
+    <section id="beta" className="scroll-mt-16 relative py-32 bg-gradient-to-br from-white via-cream-soft/30 to-mint-bright/10 overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0">
         <motion.div

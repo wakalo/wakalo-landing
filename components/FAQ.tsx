@@ -88,7 +88,7 @@ function FAQAccordion({ faq, index }: { faq: FAQItem; index: number }) {
 
 export default function FAQ() {
   return (
-    <section className="relative py-32 bg-white">
+    <section id="faq" className="scroll-mt-16 relative py-32 bg-white">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
         <motion.div

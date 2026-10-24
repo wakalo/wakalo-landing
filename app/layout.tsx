@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -23,35 +23,38 @@ const spaceGrotesk = Space_Grotesk({
 const cabinet = spaceGrotesk;
 
 export const metadata: Metadata = {
-  title: "Wakalo - Covoiturage au Bénin | Voyagez Ensemble",
+  title: "Wakalo Corp — Solutions numériques innovantes au Bénin",
   description:
-    "Rejoignez la révolution du covoiturage au Bénin. Partagez vos trajets en toute sécurité, économisez et voyagez ensemble. Programme bêta 2025.",
+    "Wakalo Corp est une entreprise du numérique basée à Cotonou. Nous concevons des applications web et mobiles sur mesure pour nos clients et développons nos propres produits, dont Wakalo, l'application de covoiturage.",
   keywords: [
-    "covoiturage",
+    "Wakalo Corp",
+    "développement d'applications",
+    "application mobile",
+    "site web",
+    "transformation numérique",
     "Bénin",
-    "transport",
-    "partage de trajet",
-    "mobilité",
-    "Wakalo",
     "Cotonou",
-    "Porto-Novo",
-    "Parakou",
+    "covoiturage",
+    "Wakalo",
   ],
-  authors: [{ name: "Wakalo" }],
+  authors: [{ name: "Wakalo Corp" }],
   openGraph: {
     type: "website",
     locale: "fr_BJ",
     url: "https://wakalo.online/",
-    title: "Wakalo - Covoiturage au Bénin",
-    description: "Partagez vos trajets en toute sécurité. Programme bêta 2025.",
-    siteName: "Wakalo",
+    title: "Wakalo Corp — Solutions numériques innovantes",
+    description: "Applications sur mesure et produits numériques conçus au Bénin.",
+    siteName: "Wakalo Corp",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wakalo - Covoiturage au Bénin",
-    description: "Partagez vos trajets en toute sécurité. Programme bêta 2025.",
+    title: "Wakalo Corp — Solutions numériques innovantes",
+    description: "Applications sur mesure et produits numériques conçus au Bénin.",
   },
-  themeColor: "#064E3B",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0B1220",
 };
 
 export default function RootLayout({
