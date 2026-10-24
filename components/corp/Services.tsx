@@ -31,7 +31,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-16 bg-cream text-ink py-24 lg:py-32">
+    <section id="services" className="scroll-mt-16 bg-paper text-ink py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
@@ -55,7 +55,7 @@ export default function Services() {
                 <div className="group grid gap-4 border-t border-ink/10 py-8 transition-colors sm:grid-cols-12 sm:items-center lg:py-10">
                   <span className="font-display text-sm text-ink/40 sm:col-span-1">0{i + 1}</span>
                   <div className="flex items-center gap-4 sm:col-span-5">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/15 transition-colors group-hover:border-ochre group-hover:bg-ochre group-hover:text-white">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/15 transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-white">
                       <s.icon className="h-5 w-5" />
                     </span>
                     <h3 className="font-display text-2xl font-semibold sm:text-3xl">{s.title}</h3>

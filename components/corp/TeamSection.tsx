@@ -20,7 +20,7 @@ const formatName = (name: string) =>
 
 export default function TeamSection({ index = "05" }: { index?: string }) {
   return (
-    <section id="team" className="scroll-mt-16 bg-cream text-ink py-24 lg:py-32">
+    <section id="team" className="scroll-mt-16 bg-paper text-ink py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
@@ -56,21 +56,21 @@ export default function TeamSection({ index = "05" }: { index?: string }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`LinkedIn de ${formatName(m.name)}`}
-                        className="flex h-9 w-9 items-center justify-center rounded-full bg-cream text-ink hover:bg-ochre hover:text-white"
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink hover:bg-brand hover:text-white"
                       >
                         <LinkedinIcon className="h-4 w-4" />
                       </a>
                       <a
                         href={m.email}
                         aria-label={`Écrire à ${formatName(m.name)}`}
-                        className="flex h-9 w-9 items-center justify-center rounded-full bg-cream text-ink hover:bg-ochre hover:text-white"
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink hover:bg-brand hover:text-white"
                       >
                         <Mail className="h-4 w-4" />
                       </a>
                     </div>
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold">{formatName(m.name)}</h3>
-                  <p className="text-sm font-medium text-ochre">{m.role}</p>
+                  <p className="text-sm font-medium text-brand">{m.role}</p>
                   <p className="mt-1 text-sm text-ink/60">{m.title}</p>
                 </article>
               </Reveal>

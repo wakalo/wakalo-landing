@@ -44,14 +44,14 @@ const products = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-cream text-ink">
+    <main className="min-h-screen bg-paper text-ink">
       {/* Hero */}
       <section className="pt-32 pb-20 lg:pt-40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <HeroIn>
             <SectionLabel index="—">À propos</SectionLabel>
             <h1 className="mt-8 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Nous construisons le numérique <span className="text-ochre">utile</span>, depuis Cotonou.
+              Nous construisons le numérique <span className="text-brand">utile</span>, depuis Cotonou.
             </h1>
           </HeroIn>
         </div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
                 <div className="h-full rounded-[1.5rem] border border-ink/10 bg-white p-8">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-ochre">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-ink text-mint-bright">
                     <v.icon className="h-6 w-6" />
                   </span>
                   <h3 className="mt-6 font-display text-2xl font-semibold">{v.title}</h3>

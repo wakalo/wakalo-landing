@@ -88,18 +88,18 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full px-4 py-3 rounded-xl border border-ink/15 bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-ochre focus:ring-2 focus:ring-ochre/20 transition-all";
+    "w-full px-4 py-3 rounded-xl border border-ink/15 bg-white text-ink placeholder-ink/40 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all";
   const labelClass = "block text-sm font-semibold text-ink mb-2";
 
   return (
-    <main className="min-h-screen bg-cream text-ink">
+    <main className="min-h-screen bg-paper text-ink">
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <HeroIn>
             <SectionLabel index="—">Contact</SectionLabel>
             <h1 className="mt-8 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Parlons de votre <span className="text-ochre">projet</span>.
+              Parlons de votre <span className="text-brand">projet</span>.
             </h1>
             <p className="mt-6 max-w-xl text-lg text-ink/70">
               Application à créer, partenariat ou question sur Wakalo : écrivez-nous, nous
@@ -122,8 +122,8 @@ export default function ContactPage() {
                       key={s}
                       className={`cursor-pointer rounded-full px-4 py-2 text-sm font-medium ring-1 transition-colors ${
                         formData.sujet === s
-                          ? "bg-ink text-cream ring-ink"
-                          : "bg-cream text-ink/70 ring-ink/10 hover:ring-ink/30"
+                          ? "bg-ink text-paper ring-ink"
+                          : "bg-paper text-ink/70 ring-ink/10 hover:ring-ink/30"
                       }`}
                     >
                       <input
@@ -189,7 +189,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={submitStatus === "sending"}
-                className="flex w-full items-center justify-center gap-3 rounded-full bg-ochre px-8 py-4 font-semibold text-white transition-colors hover:bg-ochre-dark disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-3 rounded-full bg-brand px-8 py-4 font-semibold text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send className="h-5 w-5" />
                 {submitStatus === "sending" ? "Envoi en cours…" : "Envoyer le message"}
@@ -198,19 +198,19 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={0.1} className="space-y-6 lg:col-span-5">
-            <div className="rounded-[2rem] bg-ink p-8 text-cream">
+            <div className="rounded-[2rem] bg-ink p-8 text-paper">
               <h2 className="font-display text-2xl font-bold">Nos coordonnées</h2>
               <ul className="mt-6 space-y-5">
                 {contactInfo.map((info) => {
                   const body = (
                     <>
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream/10 text-ochre">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-paper/10 text-mint-bright">
                         <info.icon className="h-5 w-5" />
                       </span>
                       <span>
                         <span className="block font-semibold">{info.title}</span>
                         {info.lines.map((line) => (
-                          <span key={line} className="block text-sm text-cream/60">{line}</span>
+                          <span key={line} className="block text-sm text-paper/60">{line}</span>
                         ))}
                       </span>
                     </>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                   return (
                     <li key={info.title}>
                       {info.href ? (
-                        <a href={info.href} className="flex items-start gap-4 hover:text-ochre transition-colors">{body}</a>
+                        <a href={info.href} className="flex items-start gap-4 hover:text-mint-bright transition-colors">{body}</a>
                       ) : (
                         <div className="flex items-start gap-4">{body}</div>
                       )}
@@ -230,7 +230,7 @@ export default function ContactPage() {
 
             <div className="rounded-[2rem] bg-white p-8 ring-1 ring-ink/10">
               <div className="flex items-center gap-3">
-                <Clock className="h-5 w-5 text-ochre" />
+                <Clock className="h-5 w-5 text-brand" />
                 <h3 className="font-display font-bold">Horaires d&apos;ouverture</h3>
               </div>
               <dl className="mt-4 space-y-3">

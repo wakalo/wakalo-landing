@@ -22,7 +22,7 @@ const features = [
     icon: Wallet,
     screen: "match" as const,
     title: "Partagez les frais, pas les soucis",
-    desc: "Un prix juste fixé à l'avance, jusqu'à 60 % moins cher qu'un taxi, et un conducteur qui amortit son trajet.",
+    desc: "Un prix juste fixé à l'avance, jusqu'à 70 % moins cher qu'un taxi, et un conducteur qui amortit son trajet.",
   },
 ];
 

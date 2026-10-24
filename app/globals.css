@@ -17,11 +17,11 @@
   /* Neutrals */
   --night-dark: #0F172A;
 
-  /* Wakalo Corp identity */
-  --ink: #0B1220;
-  --cream: #F7F4EE;
-  --ochre: #E8772E;
-  --ochre-dark: #C9601F;
+  /* Site identity (Wakalo greens) */
+  --ink: #052E25;
+  --paper: #F4F8F6;
+  --brand: #059669;
+  --brand-dark: #047857;
   --slate-800: #1E293B;
   --slate-600: #475569;
   --slate-400: #94A3B8;
@@ -50,9 +50,9 @@
   --color-cream-soft: var(--cream-soft);
   --color-night-dark: var(--night-dark);
   --color-ink: var(--ink);
-  --color-cream: var(--cream);
-  --color-ochre: var(--ochre);
-  --color-ochre-dark: var(--ochre-dark);
+  --color-paper: var(--paper);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
   --color-slate-800: var(--slate-800);
   --color-slate-600: var(--slate-600);
   --color-slate-400: var(--slate-400);

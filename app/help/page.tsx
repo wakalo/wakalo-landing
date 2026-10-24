@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   HelpCircle,
@@ -15,11 +14,15 @@ import {
   Bell,
   MapPin,
   Phone,
-  ChevronDown,
+  Plus,
+  ArrowUpRight,
 } from "lucide-react";
 import Link from "next/link";
-
-const CONTACT_EMAIL = "mailto:contact@wakalo.online";
+import DocHero from "@/components/corp/DocHero";
+import Reveal from "@/components/corp/Reveal";
+import SectionLabel from "@/components/corp/SectionLabel";
+import Footer from "@/components/Footer";
+import { SUPPORT_EMAIL } from "@/lib/links";
 
 const categories = [
   {
@@ -154,100 +157,25 @@ const securityFeatures = [
 ];
 
 const quickCards = [
-  { icon: Book, label: "Guide d'utilisation", desc: "Apprenez à utiliser Wakalo étape par étape" },
-  { icon: MessageCircle, label: "Chat en direct", desc: "Discutez avec notre équipe support" },
-  { icon: Shield, label: "Sécurité", desc: "Consultez nos conseils de sécurité" },
+  { icon: Book, label: "Questions fréquentes", desc: "Les réponses aux questions les plus posées", href: "#faq" },
+  { icon: Shield, label: "Sécurité", desc: "Nos dispositifs pour des trajets sereins", href: "#securite" },
+  { icon: MessageCircle, label: "Contacter le support", desc: "Notre équipe vous répond rapidement", href: "/contact" },
 ];
 
-function AccordionItem({
-  id,
-  content,
-  isOpen,
-  toggle,
-  index,
-}: {
-  id: string;
-  content: string;
-  isOpen: boolean;
-  toggle: () => void;
-  index: number;
-}) {
+function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
-      <button
-        onClick={toggle}
-        className="w-full px-6 py-4 flex justify-between items-start text-left hover:bg-slate-50 transition-colors"
-      >
-        <div className="flex items-start gap-3 flex-1">
-          <span className="font-bold text-mint-bright text-lg flex-shrink-0">{index + 1}.</span>
-          <span className="text-base font-semibold text-forest-deep pr-4 leading-relaxed">{content}</span>
-        </div>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="flex-shrink-0">
-          <ChevronDown className="w-5 h-5 text-green-living" />
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-4 pt-2 flex items-center gap-2 text-green-living bg-mint-bright/10">
-              <CheckCircle className="w-5 h-5 flex-shrink-0" />
-              <span className="text-sm font-medium">Obligation essentielle pour tous les utilisateurs</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function FAQItem({
-  question,
-  answer,
-  isOpen,
-  toggle,
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  toggle: () => void;
-}) {
-  return (
-    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
-      <button
-        onClick={toggle}
-        className="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-slate-50 transition-colors"
-      >
-        <span className="text-base font-semibold text-forest-deep pr-4">{question}</span>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }} className="flex-shrink-0">
-          <ChevronDown className="w-5 h-5 text-green-living" />
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <p className="px-6 pb-5 text-slate-600 leading-relaxed">{answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <details className="group py-5">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold [&::-webkit-details-marker]:hidden">
+        {question}
+        <Plus className="h-5 w-5 shrink-0 text-brand transition-transform group-open:rotate-45" />
+      </summary>
+      <p className="mt-3 max-w-2xl leading-relaxed text-ink/70">{answer}</p>
+    </details>
   );
 }
 
 export default function HelpPage() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [openAccordions, setOpenAccordions] = useState<{ [key: string]: number | null }>({});
 
   const filteredFaqs = useMemo(() => {
     if (!searchQuery.trim()) return faqs;
@@ -262,286 +190,181 @@ export default function HelpPage() {
       .filter((section) => section.questions.length > 0);
   }, [searchQuery]);
 
-  const toggle = (sectionKey: string, index: number) => {
-    setOpenAccordions((prev) => ({
-      ...prev,
-      [sectionKey]: prev[sectionKey] === index ? null : index,
-    }));
-  };
+  const searching = searchQuery.trim().length > 0;
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero + Recherche */}
-      <section className="relative py-32 bg-gradient-to-br from-forest-deep via-forest-mid to-green-living overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(52,211,153,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(52,211,153,0.1) 1px, transparent 1px)`,
-            backgroundSize: "4rem 4rem",
-          }}
-        />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6"
-          >
-            <a href="/" className="inline-flex items-center gap-2 text-slate-300 hover:text-mint-bright text-sm font-medium transition-colors">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-              Retour à l&apos;accueil
-            </a>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/20 text-mint-bright text-sm font-semibold mb-8"
-          >
-            Support Wakalo
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-white mb-6 leading-tight"
-          >
-            Centre d&apos;{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-mint-bright to-amber-gold">
-              aide
-            </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-slate-200 max-w-2xl mx-auto mb-10"
-          >
-            Trouvez rapidement les réponses à vos questions
-          </motion.p>
-
-          {/* Barre de recherche */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="relative">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Rechercher dans la FAQ..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-14 pr-6 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-slate-300 focus:outline-none focus:border-mint-bright focus:bg-white/15 transition-all text-lg"
-              />
-            </div>
-          </motion.div>
+    <main className="min-h-screen bg-paper text-ink">
+      <DocHero eyebrow="Support Wakalo" title="Centre d'aide" subtitle="Trouvez rapidement les réponses à vos questions.">
+        <div className="relative mt-10 max-w-2xl">
+          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-ink/40" />
+          <label htmlFor="help-search" className="sr-only">
+            Rechercher dans la FAQ
+          </label>
+          <input
+            id="help-search"
+            type="search"
+            placeholder="Rechercher dans la FAQ…"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-full border border-ink/15 bg-white py-4 pl-14 pr-6 text-lg placeholder-ink/40 transition-all focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+          />
         </div>
-      </section>
+      </DocHero>
 
-      {/* Résultats de recherche */}
-      {searchQuery.trim() && (
-        <section className="py-16 px-6 sm:px-8 lg:px-12 bg-slate-50">
-          <div className="max-w-4xl mx-auto">
+      {searching ? (
+        <section className="pb-24">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8">
             {filteredFaqs.length > 0 ? (
-              <div className="space-y-4">
-                {filteredFaqs.map((section) =>
-                  section.questions.map((item, qIndex) => (
-                    <motion.div
-                      key={`${section.id}-${qIndex}`}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: qIndex * 0.05 }}
-                      className="bg-white border border-slate-200 rounded-2xl p-6"
-                    >
-                      <div className="flex items-start gap-3">
-                        <section.icon className="w-5 h-5 text-green-living flex-shrink-0 mt-1" />
-                        <div>
-                          <p className="text-xs font-semibold text-green-living mb-1">{section.category}</p>
-                          <h3 className="font-semibold text-forest-deep mb-2">{item.q}</h3>
-                          <p className="text-slate-600 text-sm">{item.a}</p>
-                        </div>
-                      </div>
-                    </motion.div>
+              <ul className="space-y-4">
+                {filteredFaqs.flatMap((section) =>
+                  section.questions.map((item) => (
+                    <li key={`${section.id}-${item.q}`} className="rounded-[1.5rem] bg-white p-6 ring-1 ring-ink/10">
+                      <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand">
+                        <section.icon className="h-4 w-4" />
+                        {section.category}
+                      </p>
+                      <h3 className="mt-2 font-semibold">{item.q}</h3>
+                      <p className="mt-2 text-sm text-ink/70">{item.a}</p>
+                    </li>
                   ))
                 )}
-              </div>
+              </ul>
             ) : (
-              <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center">
-                <HelpCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                <h3 className="font-display font-bold text-xl text-forest-deep mb-2">Aucun résultat trouvé</h3>
-                <p className="text-slate-500">Essayez de reformuler votre recherche ou contactez notre support</p>
+              <div className="rounded-[1.5rem] bg-white p-12 text-center ring-1 ring-ink/10">
+                <HelpCircle className="mx-auto h-10 w-10 text-ink/30" />
+                <h3 className="mt-4 font-display text-xl font-bold">Aucun résultat trouvé</h3>
+                <p className="mt-2 text-ink/60">Essayez de reformuler votre recherche ou contactez notre support.</p>
               </div>
             )}
           </div>
         </section>
-      )}
-
-      {/* Contenu principal (affiché seulement si pas de recherche) */}
-      {!searchQuery.trim() && (
+      ) : (
         <>
-          {/* Cards rapides */}
-          <section className="py-24 px-6 sm:px-8 lg:px-12 bg-white">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8 mb-20">
-                {quickCards.map((card, i) => (
-                  <motion.div
-                    key={card.label}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    whileHover={{ y: -8 }}
-                    className="bg-slate-50 rounded-3xl p-8 text-center border-2 border-transparent hover:border-mint-bright/30 transition-all cursor-pointer"
+          {/* Quick links */}
+          <section className="pb-24">
+            <div className="max-w-7xl mx-auto grid gap-6 px-6 sm:px-8 md:grid-cols-3 lg:px-12">
+              {quickCards.map((card, i) => (
+                <Reveal key={card.label} delay={i * 0.08}>
+                  <Link
+                    href={card.href}
+                    className="group flex h-full flex-col rounded-[1.5rem] bg-white p-8 ring-1 ring-ink/10 transition-shadow hover:shadow-lg"
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-forest-deep to-green-living flex items-center justify-center mx-auto mb-6 shadow-lg shadow-forest-deep/20">
-                      <card.icon className="w-8 h-8 text-mint-bright" />
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint-bright/20 text-brand">
+                      <card.icon className="h-6 w-6" />
+                    </span>
+                    <h2 className="mt-6 flex items-center gap-2 font-display text-xl font-semibold">
+                      {card.label}
+                      <ArrowUpRight className="h-4 w-4 text-brand transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </h2>
+                    <p className="mt-2 text-ink/60">{card.desc}</p>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* Security */}
+          <section id="securite" className="scroll-mt-16 bg-ink py-24 text-white lg:py-32">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+              <Reveal>
+                <SectionLabel index="01" tone="dark">
+                  Sécurité
+                </SectionLabel>
+                <h2 className="mt-6 max-w-2xl font-display text-4xl font-bold leading-tight tracking-tight">
+                  Des dispositifs pensés pour votre tranquillité.
+                </h2>
+              </Reveal>
+              <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {securityFeatures.map((f, i) => (
+                  <li key={f.title}>
+                    <Reveal delay={i * 0.06} className="h-full rounded-[1.5rem] bg-white/[0.05] p-6 ring-1 ring-white/10">
+                      <f.icon className="h-6 w-6 text-mint-bright" />
+                      <h3 className="mt-4 font-semibold">{f.title}</h3>
+                      <p className="mt-2 text-sm text-white/60">{f.desc}</p>
+                    </Reveal>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* Community rules */}
+          <section className="bg-white py-24 lg:py-32">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+              <Reveal>
+                <SectionLabel index="02">Règles de la communauté</SectionLabel>
+                <h2 className="mt-6 max-w-2xl font-display text-4xl font-bold leading-tight tracking-tight">
+                  Les engagements de chacun.
+                </h2>
+              </Reveal>
+              <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                {categories.map((category, ci) => (
+                  <Reveal key={category.id} delay={ci * 0.1}>
+                    <div className="h-full rounded-[2rem] bg-paper p-8 sm:p-10">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-white">
+                          <category.icon className="h-5 w-5" />
+                        </span>
+                        <h3 className="font-display text-2xl font-bold">{category.title}</h3>
+                      </div>
+                      <ul className="mt-8 space-y-4">
+                        {category.items.map((item) => (
+                          <li key={item} className="flex gap-3 text-ink/80">
+                            <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <h3 className="font-display font-bold text-xl text-forest-deep mb-3">{card.label}</h3>
-                    <p className="text-slate-600">{card.desc}</p>
-                  </motion.div>
+                  </Reveal>
                 ))}
               </div>
+            </div>
+          </section>
 
-              {/* Fonctionnalités de sécurité */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mb-20"
-              >
-                <h2 className="font-display font-black text-3xl text-forest-deep text-center mb-12">
-                  Fonctionnalités de sécurité Wakalo
-                </h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {securityFeatures.map((feature, index) => (
-                    <motion.div
-                      key={feature.title}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-slate-50 border-2 border-slate-100 rounded-2xl p-6 text-center hover:border-mint-bright/30 transition-all"
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-forest-deep to-green-living flex items-center justify-center mx-auto mb-4">
-                        <feature.icon className="w-6 h-6 text-mint-bright" />
-                      </div>
-                      <h3 className="font-bold text-forest-deep mb-2">{feature.title}</h3>
-                      <p className="text-sm text-slate-500">{feature.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* FAQ par catégorie */}
-              <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                  <span className="inline-block px-4 py-2 rounded-full bg-mint-bright/10 text-green-living font-semibold text-sm mb-6">
-                    FAQ complète
-                  </span>
-                  <h2 className="font-display font-black text-4xl text-forest-deep mb-4">
-                    Parcourir par catégorie
-                  </h2>
-                  <p className="text-slate-600 text-xl">Tout ce que vous devez savoir sur Wakalo</p>
-                </div>
-
-                <div className="space-y-6">
-                  {/* Obligations */}
-                  {categories.map((category, catIndex) => (
-                    <motion.div
-                      key={category.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: catIndex * 0.05 }}
-                      className="border-2 border-slate-100 rounded-3xl overflow-hidden"
-                    >
-                      <div className="px-6 py-4 bg-gradient-to-r from-forest-deep to-green-living flex items-center gap-3">
-                        <category.icon className="w-6 h-6 text-mint-bright" />
-                        <h3 className="text-xl font-bold text-white">{category.title}</h3>
-                        <span className="ml-auto bg-white/20 px-3 py-1 rounded-full text-white text-sm font-semibold">
-                          {category.items.length} obligations
-                        </span>
-                      </div>
-                      <div className="p-4 space-y-3 bg-slate-50">
-                        {category.items.map((item, itemIndex) => (
-                          <AccordionItem
-                            key={itemIndex}
-                            id={category.id}
-                            content={item}
-                            isOpen={openAccordions[category.id] === itemIndex}
-                            toggle={() => toggle(category.id, itemIndex)}
-                            index={itemIndex}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-
-                  {/* FAQ */}
-                  {faqs.map((section, sectionIndex) => (
-                    <motion.div
-                      key={section.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: sectionIndex * 0.05 }}
-                      className="border-2 border-slate-100 rounded-3xl overflow-hidden"
-                    >
-                      <div className="px-6 py-4 bg-gradient-to-r from-forest-deep to-green-living flex items-center gap-3">
-                        <section.icon className="w-6 h-6 text-mint-bright" />
-                        <h3 className="text-xl font-bold text-white">{section.category}</h3>
-                        <span className="ml-auto bg-white/20 px-3 py-1 rounded-full text-white text-sm font-semibold">
-                          {section.questions.length} questions
-                        </span>
-                      </div>
-                      <div className="p-4 space-y-3 bg-slate-50">
-                        {section.questions.map((item, qIndex) => (
-                          <FAQItem
-                            key={qIndex}
-                            question={item.q}
-                            answer={item.a}
-                            isOpen={openAccordions[section.id] === qIndex}
-                            toggle={() => toggle(section.id, qIndex)}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+          {/* FAQ */}
+          <section id="faq" className="scroll-mt-16 py-24 lg:py-32">
+            <div className="max-w-7xl mx-auto grid gap-12 px-6 sm:px-8 lg:grid-cols-12 lg:px-12">
+              <Reveal className="lg:col-span-4">
+                <SectionLabel index="03">FAQ</SectionLabel>
+                <h2 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight">Parcourir par catégorie</h2>
+                <p className="mt-4 text-ink/60">Tout ce que vous devez savoir sur Wakalo.</p>
+              </Reveal>
+              <div className="space-y-10 lg:col-span-8">
+                {faqs.map((section) => (
+                  <Reveal key={section.id}>
+                    <h3 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+                      <section.icon className="h-4 w-4" />
+                      {section.category}
+                    </h3>
+                    <div className="mt-2 divide-y divide-ink/10 border-y border-ink/10">
+                      {section.questions.map((item) => (
+                        <FAQItem key={item.q} question={item.q} answer={item.a} />
+                      ))}
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </div>
           </section>
         </>
       )}
 
-      {/* CTA Support */}
-      <section className="py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-forest-deep via-forest-mid to-green-living">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <h2 className="font-display font-black text-4xl text-white mb-4">
-            Vous ne trouvez pas de réponse ?
-          </h2>
-          <p className="text-xl text-slate-200 mb-8">Notre équipe est là pour vous aider</p>
-          <motion.a
-            href={CONTACT_EMAIL}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(52, 211, 153, 0.5)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-mint-bright text-forest-deep font-bold text-lg rounded-2xl shadow-xl shadow-mint-bright/30 transition-all"
+      {/* Support CTA */}
+      <section className="px-4 pb-4 sm:px-6 sm:pb-6">
+        <div className="rounded-[2rem] bg-forest-deep px-6 py-20 text-center text-white sm:px-8">
+          <h2 className="font-display text-4xl font-bold">Vous ne trouvez pas de réponse ?</h2>
+          <p className="mt-4 text-lg text-white/70">Notre équipe est là pour vous aider.</p>
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-mint-bright px-7 py-4 font-bold text-forest-deep transition-colors hover:bg-mint-soft"
           >
             Contacter le support
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </section>
+
+      <Footer />
     </main>
   );
 }

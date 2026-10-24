@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import Hero from "@/components/Hero";
-import TrustBar from "@/components/TrustBar";
-import HowItWorks from "@/components/HowItWorks";
-import Benefits from "@/components/Benefits";
-import Impact from "@/components/Impact";
-import Coverage from "@/components/Coverage";
-import LivingRoute from "@/components/LivingRoute";
-import BetaSignup from "@/components/BetaSignup";
-import FAQ from "@/components/FAQ";
+import WakaloHero from "@/components/wakalo/WakaloHero";
+import HowItWorks from "@/components/wakalo/HowItWorks";
+import Features from "@/components/wakalo/Features";
+import Mission from "@/components/wakalo/Mission";
+import Coverage from "@/components/wakalo/Coverage";
+import BetaCTA from "@/components/wakalo/BetaCTA";
+import FAQ from "@/components/wakalo/FAQ";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 
@@ -27,15 +25,13 @@ export const metadata: Metadata = {
 
 export default function WakaloPage() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <TrustBar />
+    <main className="min-h-screen bg-paper">
+      <WakaloHero />
       <HowItWorks />
-      <Benefits />
-      <Impact />
+      <Features />
+      <Mission />
       <Coverage />
-      <LivingRoute />
-      <BetaSignup />
+      <BetaCTA />
       <FAQ />
       <Footer />
       <BackToTop />

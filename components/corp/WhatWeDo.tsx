@@ -16,20 +16,20 @@ export default function WhatWeDo() {
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <article className="group flex h-full flex-col justify-between rounded-[2rem] bg-ink p-8 text-cream sm:p-10">
+            <article className="group flex h-full flex-col justify-between rounded-[2rem] bg-ink p-8 text-paper sm:p-10">
               <div>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ochre">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand">
                   <Code2 className="h-7 w-7 text-white" />
                 </div>
                 <h3 className="mt-8 font-display text-3xl font-bold">Solutions sur mesure</h3>
-                <p className="mt-4 max-w-md leading-relaxed text-cream/70">
+                <p className="mt-4 max-w-md leading-relaxed text-paper/70">
                   Vous avez une idée, un besoin métier ou un processus à digitaliser ? Nous concevons
                   et développons votre application web ou mobile, du cadrage jusqu&apos;à la mise en ligne.
                 </p>
               </div>
               <Link
                 href="#services"
-                className="mt-10 inline-flex items-center gap-2 font-semibold text-ochre"
+                className="mt-10 inline-flex items-center gap-2 font-semibold text-mint-bright"
               >
                 Voir nos services
                 <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -38,10 +38,10 @@ export default function WhatWeDo() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <article className="group flex h-full flex-col justify-between rounded-[2rem] border border-ink/10 bg-cream p-8 sm:p-10">
+            <article className="group flex h-full flex-col justify-between rounded-[2rem] border border-ink/10 bg-paper p-8 sm:p-10">
               <div>
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-ink">
-                  <Rocket className="h-7 w-7 text-ochre" />
+                  <Rocket className="h-7 w-7 text-mint-bright" />
                 </div>
                 <h3 className="mt-8 font-display text-3xl font-bold">Nos propres produits</h3>
                 <p className="mt-4 max-w-md leading-relaxed text-ink/70">
