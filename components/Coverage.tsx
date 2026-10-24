@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, Navigation } from "lucide-react";
 import Link from "next/link";
 
-const BETA_FORM_URL =
-  "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tkL-LRUNTZaVjA2QjVLMjVLTEFPREhRMUtOQTY1Ni4u";
+import { BETA_FORM_URL } from "@/lib/links";
 
 const mainCities = [
   { name: "Cotonou", subtitle: "Capitale économique", color: "from-mint-bright to-green-living" },

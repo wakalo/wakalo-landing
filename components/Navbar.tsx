@@ -6,8 +6,7 @@ import { Menu, X, Car } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const BETA_FORM_URL =
-  "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tkL-LRUNTZaVjA2QjVLMjVLTEFPREhRMUtOQTY1Ni4u";
+import { BETA_FORM_URL } from "@/lib/links";
 
 const navLinks = [
   { href: "/#features", label: "Fonctionnalités" },

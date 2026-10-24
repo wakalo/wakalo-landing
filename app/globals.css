@@ -16,6 +16,12 @@
 
   /* Neutrals */
   --night-dark: #0F172A;
+
+  /* Wakalo Corp identity */
+  --ink: #0B1220;
+  --cream: #F7F4EE;
+  --ochre: #E8772E;
+  --ochre-dark: #C9601F;
   --slate-800: #1E293B;
   --slate-600: #475569;
   --slate-400: #94A3B8;
@@ -43,6 +49,10 @@
   --color-coral-red: var(--coral-red);
   --color-cream-soft: var(--cream-soft);
   --color-night-dark: var(--night-dark);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-ochre: var(--ochre);
+  --color-ochre-dark: var(--ochre-dark);
   --color-slate-800: var(--slate-800);
   --color-slate-600: var(--slate-600);
   --color-slate-400: var(--slate-400);
@@ -58,7 +68,7 @@
 
   /* Typography */
   --font-sans: var(--font-satoshi);
-  --font-display: var(--font-cabinet);
+  --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-space-grotesk);
 
   /* Spacing Scale - Generous */
