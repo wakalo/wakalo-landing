@@ -1,24 +1,24 @@
 # Wakalo Corp & Wakalo - Design Guide
 
-## Deux identités
+## Identité unique (à jour)
 
-Le site présente **Wakalo Corp** (l'entreprise) et **Wakalo** (son application de covoiturage).
-Les deux identités restent visuellement distinctes.
-
-### Wakalo Corp — entreprise
-Utilisée sur `/`, `/about`, `/contact`, la navbar et le footer.
+Tout le site — Wakalo Corp et l'application Wakalo — partage la même identité verte, dans un
+style sobre et éditorial (fonds clairs, grands titres Space Grotesk, cartes arrondies, pas de
+dégradés décoratifs ni d'émojis).
 ```
-Ink:         #0B1220  (bg-ink / text-ink)   - texte, blocs forts, footer
-Cream:       #F7F4EE  (bg-cream)            - fond principal
-Ochre:       #E8772E  (bg-ochre / text-ochre) - CTA, accents
-Ochre Dark:  #C9601F  (hover:bg-ochre-dark)
+Ink:          #052E25  (bg-ink / text-ink)       - texte, blocs foncés
+Paper:        #F4F8F6  (bg-paper)                - fond principal
+Brand:        #059669  (bg-brand / text-brand)   - boutons et accents sur fond clair
+Brand Dark:   #047857  (hover:bg-brand-dark)
+Forest Deep:  #064E3B  (bg-forest-deep)          - footer, sections fortes
+Mint Bright:  #34D399  (text-mint-bright)        - accents sur fond foncé
 ```
-Composants : `components/corp/*` (`Reveal` pour les apparitions, respecte prefers-reduced-motion ;
-`SectionLabel` pour les sur-titres numérotés).
+Composants partagés : `components/corp/*` — `HeroIn` (entrée CSS du haut de page, sans JS),
+`Reveal` (apparition au scroll, respecte prefers-reduced-motion), `SectionLabel` (sur-titres
+numérotés), `DocHero` (en-tête des pages de texte). Sections de `/wakalo` : `components/wakalo/*`.
 
-### Wakalo — application de covoiturage
-Utilisée uniquement dans la section `#products` de l'accueil (`WakaloShowcase`) et sur
-`/wakalo`, `/help`, `/terms`, `/legal`. Palette « Tropical Modernism » ci-dessous.
+La palette historique ci-dessous reste disponible (forest, mint…) ; amber/coral ne servent plus
+qu'aux messages d'erreur ou d'avertissement.
 
 ---
 

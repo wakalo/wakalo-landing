@@ -38,7 +38,7 @@ export default function BackToTop() {
     <>
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-mint-bright via-green-living to-amber-gold origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-mint-bright to-green-living origin-left z-50"
         style={{ scaleX }}
       />
 
